@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>User Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{user.firstName + " " + user.lastName}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card-subtitle>Statistics:</ion-card-subtitle>
+      <ul>
+        <li>{{user.vertical}}</li>
+        <li>{{user.sprint}}</li>
+      </ul>
+      <ion-buttons slot="primary">
+        <ion-button routerLink="/edit/{{user.id}}">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+        <ion-button (click)="delete(user.id)">
+          <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
