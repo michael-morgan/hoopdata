@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { LoadingController } from '@ionic/angular';
 
-import { RestApiService } from '../services/rest-api.service';
+import { RestApiService } from '../../services/rest-api.service';
 
 @Component({
   selector: 'app-user',

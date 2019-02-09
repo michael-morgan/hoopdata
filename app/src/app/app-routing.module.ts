@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './public/register/register.module#RegisterPageModule' },
-  { path: 'dashboard', loadChildren: './private/dashboard/dashboard.module#DashboardPageModule' },
+  {
+    path: 'private',
+    canActivate: [AuthenticationGuard],
+    loadChildren: './private/private-routing.module#PrivateRoutingModule'
+  },
   { path: 'user/:id', loadChildren: './private/user/user.module#UserPageModule' }
 ];
 
