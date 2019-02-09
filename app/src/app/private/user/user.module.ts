@@ -6,7 +6,7 @@ import { Routes, RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { IonicModule, LoadingController } from '@ionic/angular';
 
 import { UserPage } from './user.page';
-import { RestApiService } from '../rest-api.service';
+import { RestApiService } from '../../services/rest-api.service';
 
 const routes: Routes = [
   {
