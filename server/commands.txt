@@ -1,0 +1,8 @@
+server:
+npm start
+sequelize model:create --name Classroom --attributes class_name:string
+sequelize db:migrate
+sequelize db:migrate:undo
+
+curl:
+curl -i -X POST -H "Content-Type: application/json" -d '{"firstName":"Michael","lastName":"Morgan"}' localhost:3000/api/user

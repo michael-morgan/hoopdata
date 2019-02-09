@@ -1,0 +1,3 @@
+Ionic:
+ionic serve
+ionic g|generate
