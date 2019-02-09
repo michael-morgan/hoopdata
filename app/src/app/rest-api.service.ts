@@ -50,7 +50,7 @@ export class RestApiService {
   }
 
   public postUser(data): Observable<any> {
-    const url = `${apiUrl}/add_with_users`;
+    const url = `${apiUrl}`;
     return this.http.post(url, data, httpOptions)
       .pipe(
         catchError(this.handleError)

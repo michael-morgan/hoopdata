@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { LoadingController } from '@ionic/angular';
+
+import { RestApiService } from '../rest-api.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPage implements OnInit {
 
-  constructor() { }
+  private user: any = {};
+
+  constructor(private api: RestApiService,
+    private loadingController: LoadingController,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  async getUser() {
+    const loading = await this.loadingController.create({
+      message: 'Loading'
+    });
+    await loading.present();
+    await this.api.getUserById(this.route.snapshot.paramMap.get('id'))
+      .subscribe(res => {
+        console.log(res);
+        this.user = res;
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
   }
 
 }
