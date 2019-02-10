@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -18,7 +18,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private menu: MenuController
   ) {
     this.initializeApp();
   }
@@ -39,6 +40,11 @@ export class AppComponent {
   }
 
   public logout() {
+    this.menu.enable(false);
     this.authService.logout();
+  }
+
+  public isLoggedIn() {
+    return this.authService.isAuthenticated();
   }
 }
