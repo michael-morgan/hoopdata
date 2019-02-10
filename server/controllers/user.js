@@ -1,4 +1,6 @@
 const User = require('../models').User;
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 module.exports = {
   list(req, res) {
@@ -18,7 +20,8 @@ module.exports = {
       .then((user) => {
         if (!user) {
           return res.status(404).send({
-            message: 'User Not Found',
+            success: false,
+            message: 'User not found.',
           });
         }
         return res.status(200).send(user);
@@ -26,14 +29,42 @@ module.exports = {
       .catch((error) => res.status(400).send(error));
   },
 
+  get(req, res) {
+    return User
+      .findOne({
+          where: { id: req.userId },
+          attributes: [ 'email', 'firstName', 'lastName' ]
+      })
+      .then((user) => {
+        if (!user) {
+          return res.status(404).send({
+            success: false,
+            message: 'User not found.',
+          });
+        }
+
+        return res.status(200).send({
+            success: true,
+            message: 'User found.',
+            user
+        });
+      })
+      .catch((error) => res.status(400).send(error));
+  },
+
   add(req, res) {
     return User
       .create({
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 8),
         firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        lastName: req.body.lastName
       })
-      .then((user) => res.status(201).send(user))
-      .catch((error) => res.status(400).send(error));
+      .then((user) => res.status(201).send({ success: true, message: 'User registered successfully.' }))
+      .catch((error) => res.status(400).send({
+          success: false,
+          message: 'Error: ' + error
+      }));
   },
 
   update(req, res) {
@@ -42,7 +73,8 @@ module.exports = {
       .then(user => {
         if (!user) {
           return res.status(404).send({
-            message: 'User Not Found',
+            success: false,
+            message: 'User not found',
           });
         }
         return user
@@ -71,5 +103,5 @@ module.exports = {
           .catch((error) => res.status(400).send(error));
       })
       .catch((error) => res.status(400).send(error));
-  },
+  }
 };
