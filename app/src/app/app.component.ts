@@ -8,21 +8,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    }
-  ];
 
   constructor(
     private platform: Platform,
@@ -47,5 +36,9 @@ export class AppComponent {
         }
       });
     });
+  }
+
+  public logout() {
+    this.authService.logout();
   }
 }

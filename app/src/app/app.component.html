@@ -1,24 +1,47 @@
 <ion-app>
-  <ion-split-pane>
-    <ion-menu>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
+  <ion-menu side="start" menuId="menuId">
+    <ion-header>
+      <ion-toolbar id="menuContainer">
+        <div float-left>
+          <ion-icon name="contact"></ion-icon>
+          <span>Michael Morgan</span>
+        </div>
+        <div>
+            <span>Pos - PG</span>
+            <span>Team - Vikings</span>
+            <span>HT - 6-0</span>
+            <span>WT - 192 lbs</span>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle id="sideMenu" auto-hide="false">
+          <ion-list>
+            <ion-item>
+              <ion-icon name="home"></ion-icon>
+              Home
             </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet main></ion-router-outlet>
-  </ion-split-pane>
+            <ion-item>
+              <ion-icon name="contact"></ion-icon>
+              My Profile
+            </ion-item>
+            <ion-item>
+              <ion-icon name="stats"></ion-icon>
+              Training Progress
+            </ion-item>
+            <ion-item>
+              <ion-icon name="settings"></ion-icon>
+              Settings
+            </ion-item>
+            <ion-item (click)="logout()">
+              <ion-icon name="log-out"></ion-icon>
+              Logout
+            </ion-item>
+          </ion-list>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
 </ion-app>

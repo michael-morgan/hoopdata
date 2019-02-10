@@ -1,0 +1,31 @@
+#menuContainer {
+    padding: 20px 0;
+}
+
+#menuContainer ion-icon {
+    font-size: 60px;
+}
+
+#menuContainer div:first-child {
+    margin: 0 20px 0 10px;
+    align-items: center;
+}
+
+#menuContainer p {
+    margin: 5px 0;
+}
+
+#menuContainer div:nth-child(2) span {
+    margin: 5px 0;
+}
+
+#menuContainer div {
+    min-height: 95px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#sideMenu ion-icon {
+    margin-right: 10px;
+}

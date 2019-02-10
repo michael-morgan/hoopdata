@@ -1,14 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="logout()">
-        <ion-icon slot="icon-only" name="log-out"></ion-icon>
-      </ion-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>HoopData</ion-title>
+    <picture>
+      <source srcset="../../../assets/logo.svg" type="image/svg+xml">
+      <img id="logo" src="../../../assets/logo.png" alt="HoopData Logo">
+    </picture>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-button expand="block" strong="true">Shots</ion-button>
+  <ion-button expand="block" strong="true">Timer</ion-button>
+  <ion-button expand="block" strong="true">Skills/Drills</ion-button>
+  <ion-button expand="block" strong="true">Connect</ion-button>
 </ion-content>
