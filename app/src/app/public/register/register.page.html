@@ -1,12 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="/login"></ion-back-button>
+        <ion-back-button defaultHref="/lander"></ion-back-button>
     </ion-buttons>
     <ion-title>Create Account</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <picture>
+    <source srcset="../../../assets/account.svg" type="image/svg+xml">
+    <img id="accountMedia" src="../../../assets/account.png" alt="Account Media">
+  </picture>
 
+  <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input type="text" formControlName="firstName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input type="text" formControlName="lastName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-button id="registerButton" expand="block" type="submit" [disabled]="!credentialsForm.valid" strong="true">Sign Up</ion-button>
+  </form>
 </ion-content>

@@ -23,9 +23,4 @@ export class LoginPage implements OnInit {
   public onSubmit() {
     this.authService.login(this.credentialsForm.value).subscribe();
   }
-
-  public login() {
-    // this.authService.login();
-  }
-
 }

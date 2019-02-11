@@ -35,7 +35,7 @@ export class AppComponent {
         if (state) {
           this.router.navigate(['private', 'dashboard']);
         } else {
-          this.router.navigate(['login']);
+          this.router.navigate(['lander']);
         }
       });
     });

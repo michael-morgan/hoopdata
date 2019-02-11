@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="/lander"></ion-back-button>
+        <ion-back-button defaultHref="/lander" [routerLink]="['/lander']" routerDirection="back"></ion-back-button>
     </ion-buttons>
     <ion-title>Login</ion-title>
   </ion-toolbar>
@@ -24,7 +24,7 @@
         <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
     </ion-item>
 
-    <a id="forgotPassword" href="" float-right>Forgot Password?</a>
+    <a id="forgotPassword" float-right>Forgot Password?</a>
     <ion-button expand="block" type="submit" [disabled]="!credentialsForm.valid" strong="true">Login</ion-button>
 </form>
 </ion-content>

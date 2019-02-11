@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>lander</ion-title>
+    <picture>
+      <source srcset="../../../assets/logo.svg" type="image/svg+xml">
+      <img id="logo" src="../../../assets/logo.png" alt="HoopData Logo">
+    </picture>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-card>
+    ​<picture>
+      <source srcset="../../../assets/basketball.svg" type="image/svg+xml">
+      <img id="basketballMedia" src="../../../assets/basketball.png" alt="Basketball Media">
+    </picture>
 
+    <ion-card-content>
+      Keep track of your shots and discover insights on where you can improve as a player! Additional features are provided such as a timer, persistent drill sessions, and the ability to view other player statistics!
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button [routerLink]="['/register']" expand="block" strong="true">Sign Up</ion-button>
+  <p id="existingMember">Existing member? <a [routerLink]="['/login']">Login</a></p>
 </ion-content>

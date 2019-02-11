@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Platform, AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { tap, catchError } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
@@ -20,7 +21,7 @@ export class AuthenticationService {
 
   constructor(private storage: Storage, private plat: Platform,
     private http: HttpClient, private helper: JwtHelperService,
-    private alertController: AlertController) {
+    private alertController: AlertController, private router: Router) {
     this.plat.ready().then(() => {
       this.checkToken();
     });
@@ -69,6 +70,7 @@ export class AuthenticationService {
   public logout() {
     return this.storage.remove(TOKEN_KEY).then(() => {
       this.authenticationState.next(false);
+      this.router.navigate(['/login']);
     });
   }
 
@@ -80,7 +82,15 @@ export class AuthenticationService {
     return this.authenticationState;
   }
 
-  showAlert(msg) {
+  public getUser() {
+    if (this.isAuthenticated()) {
+      return this.user;
+    }
+
+    return {};
+  }
+
+  public showAlert(msg) {
     const alert = this.alertController.create({
       message: msg,
       header: 'Error',
