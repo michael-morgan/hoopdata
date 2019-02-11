@@ -7,14 +7,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
-const TOKEN_KEY = 'access_token';
+const TOKEN_KEY = 'accessToken';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private url = environment.url;
+  private url = environment.serverURL;
   private user = null;
   private authenticationState = new BehaviorSubject(false);
 
@@ -55,8 +55,8 @@ export class AuthenticationService {
     return this.http.post(`${this.url}/api/auth/login`, credentials)
       .pipe(
         tap(res => {
-          this.storage.set(TOKEN_KEY, res['token']);
-          this.user = this.helper.decodeToken(res['token']);
+          this.storage.set(TOKEN_KEY, res['accessToken']);
+          this.user = this.helper.decodeToken(res['accessToken']);
           this.authenticationState.next(true);
         }),
         catchError(e => {

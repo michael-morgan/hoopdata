@@ -2,9 +2,9 @@ const User = require('../models').User;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-module.exports = {
-    secret: "HoopDataSecret",
+const secretKey = 'HoopDataSecret';
 
+module.exports = {
     checkDuplicate(req, res, next) {
         return User.findOne({
             where: { email: req.body.email }
@@ -27,7 +27,7 @@ module.exports = {
             });
         }
 
-        jwt.verify(token, this.secret, (err, decoded) => {
+        jwt.verify(token, secretKey, (err, decoded) => {
             if (err) {
                 return res.status(500).send({
                     auth: false,
@@ -44,6 +44,8 @@ module.exports = {
         return User.findOne({
             where: { email: req.body.email }
         }).then(user => {
+            console.log("User: " + user.id);
+
             if (!user) {
                 return res.status(404).send({ success: false, message: 'User not found.' });
             }
@@ -53,7 +55,7 @@ module.exports = {
                 return res.status(401).send({ auth: false, accessToken: null, success: false, message: 'Invalid password.' });
             }
 
-            const token = jwt.sign({ id: user.id }, this.secret, { expiresIn: 86400 });
+            const token = jwt.sign({ id: user.id, email: user.email }, secretKey, { expiresIn: 86400 });
 
             res.status(200).send({ auth: true, accessToken: token, success: true, message: 'Login successful.' });
         }).catch(err => {

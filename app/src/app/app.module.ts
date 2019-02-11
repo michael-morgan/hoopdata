@@ -15,9 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 export function jwtOptionsFactory(storage) {
   return {
     tokenGetter: () => {
-      return storage.get('access_token');
+      return storage.get('accessToken');
     },
-    whitelistedDomains: ['localhost:8100']
+    whitelistedDomains: ['localhost:3000']
   };
 }
 

@@ -52,6 +52,6 @@ export class AppComponent {
 
   public clearToken() {
     // Just for testing.
-    this.storage.remove('access_token');
+    this.storage.remove('accessToken');
   }
 }
