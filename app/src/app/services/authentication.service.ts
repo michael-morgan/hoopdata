@@ -16,7 +16,6 @@ const TOKEN_KEY = 'accessToken';
 export class AuthenticationService {
 
   private url = environment.serverURL;
-  private user = null;
   private authenticationState = new BehaviorSubject(false);
   private userSubject = new Subject<any>();
 
@@ -36,9 +35,8 @@ export class AuthenticationService {
         const isExpired = this.helper.isTokenExpired(token);
 
         if (!isExpired) {
-          this.user = decoded;
           this.authenticationState.next(true);
-          this.userSubject.next(this.user);
+          this.userSubject.next(decoded);
         } else {
           this.storage.remove(TOKEN_KEY);
           window.localStorage.removeItem(TOKEN_KEY);
@@ -66,9 +64,8 @@ export class AuthenticationService {
         tap(res => {
           this.storage.set(TOKEN_KEY, res['accessToken']);
           window.localStorage.setItem(TOKEN_KEY, res['accessToken']);
-          this.user = this.helper.decodeToken(res['accessToken']);
           this.authenticationState.next(true);
-          this.userSubject.next(this.user);
+          this.userSubject.next(this.helper.decodeToken(res['accessToken']));
         }),
         catchError(e => {
           this.showAlert(e.error.msg);
