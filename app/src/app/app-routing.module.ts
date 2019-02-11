@@ -4,6 +4,7 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'private/dashboard', pathMatch: 'full' },
+  { path: 'lander', loadChildren: './public/lander/lander.module#LanderPageModule' },
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './public/register/register.module#RegisterPageModule' },
   {

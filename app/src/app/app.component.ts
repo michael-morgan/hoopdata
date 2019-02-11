@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 
 import { Platform, MenuController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -19,7 +20,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private authService: AuthenticationService,
     private router: Router,
-    private menu: MenuController
+    private menu: MenuController,
+    private storage: Storage
   ) {
     this.initializeApp();
   }
@@ -46,5 +48,10 @@ export class AppComponent {
 
   public isLoggedIn() {
     return this.authService.isAuthenticated();
+  }
+
+  public clearToken() {
+    // Just for testing.
+    this.storage.remove('access_token');
   }
 }
