@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { LoadingController } from '@ionic/angular';
 
-import { RestApiService } from '../../services/rest-api.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -14,29 +14,27 @@ export class UserPage implements OnInit {
 
   private user: any = {};
 
-  constructor(private api: RestApiService,
+  constructor(private userService: UserService,
     private loadingController: LoadingController,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-    this.getUser();
+    // this.getUser();
   }
 
-  async getUser() {
-    const loading = await this.loadingController.create({
-      message: 'Loading'
-    });
-    await loading.present();
-    await this.api.getUserById(this.route.snapshot.paramMap.get('id'))
-      .subscribe(res => {
-        console.log(res);
-        this.user = res;
-        loading.dismiss();
-      }, err => {
-        console.log(err);
-        loading.dismiss();
-      });
-  }
+  // public async getUser() {
+  //   const loading = await this.loadingController.create({
+  //     message: 'Loading'
+  //   });
+  //   await loading.present();
+  //   await this.userService.getUser()
+  //     .subscribe(res => {
+  //       this.user = res;
+  //       loading.dismiss();
+  //     }, err => {
+  //       loading.dismiss();
+  //     });
+  // }
 
 }

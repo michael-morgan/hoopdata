@@ -44,8 +44,6 @@ module.exports = {
         return User.findOne({
             where: { email: req.body.email }
         }).then(user => {
-            console.log("User: " + user.id);
-
             if (!user) {
                 return res.status(404).send({ success: false, message: 'User not found.' });
             }

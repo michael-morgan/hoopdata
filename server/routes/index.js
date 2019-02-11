@@ -12,9 +12,8 @@ router.get('/', function(req, res, next) {
 router.post('/api/auth/login', authController.login);
 router.post('/api/auth/register', [authController.checkDuplicate], userController.add);
 
-router.get('/api/user', [authController.verifyToken], userController.get);
+router.get('/api/user/:id', [authController.verifyToken], userController.getById);
 //router.get('/api/user', userController.list);
-//router.get('/api/user/:id', userController.getById);
 //router.post('/api/user', [authController.checkDuplicate], userController.add);
 //router.put('/api/user/:id', userController.update);
 //router.delete('/api/user/:id', userController.delete);

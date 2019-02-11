@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 
@@ -7,12 +7,16 @@ import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { UserService } from './services/user.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
+  public user: any = {};
 
   constructor(
     private platform: Platform,
@@ -21,7 +25,8 @@ export class AppComponent {
     private authService: AuthenticationService,
     private router: Router,
     private menu: MenuController,
-    private storage: Storage
+    private storage: Storage,
+    private userService: UserService
   ) {
     this.initializeApp();
   }
@@ -38,6 +43,13 @@ export class AppComponent {
           this.router.navigate(['lander']);
         }
       });
+
+      this.authService.getUser().subscribe(user => {
+        this.userService.getUser(user.id)
+          .subscribe(res => {
+            this.user = res;
+          });
+      });
     });
   }
 
@@ -48,10 +60,5 @@ export class AppComponent {
 
   public isLoggedIn() {
     return this.authService.isAuthenticated();
-  }
-
-  public clearToken() {
-    // Just for testing.
-    this.storage.remove('accessToken');
   }
 }

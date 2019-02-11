@@ -16,7 +16,7 @@ module.exports = {
 
   getById(req, res) {
     return User
-      .findById(req.params.id)
+      .findByPk(req.params.id)
       .then((user) => {
         if (!user) {
           return res.status(404).send({
@@ -24,32 +24,16 @@ module.exports = {
             message: 'User not found.',
           });
         }
+
+        user.dataValues.id = undefined;
+        user.dataValues.email = undefined;
+        user.dataValues.password = undefined;
+
         return res.status(200).send(user);
       })
-      .catch((error) => res.status(400).send(error));
-  },
-
-  get(req, res) {
-    return User
-      .findOne({
-          where: { id: req.userId },
-          attributes: [ 'email', 'firstName', 'lastName' ]
-      })
-      .then((user) => {
-        if (!user) {
-          return res.status(404).send({
-            success: false,
-            message: 'User not found.',
-          });
-        }
-
-        return res.status(200).send({
-            success: true,
-            message: 'User found.',
-            user
+      .catch((error) => {
+          res.status(400).send(error)
         });
-      })
-      .catch((error) => res.status(400).send(error));
   },
 
   add(req, res) {

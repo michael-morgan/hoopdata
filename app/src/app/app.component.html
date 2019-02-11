@@ -4,13 +4,12 @@
       <ion-toolbar id="menuContainer">
         <div float-left>
           <ion-icon name="contact"></ion-icon>
-          <span>Michael Morgan</span>
+          <span>{{user.firstName + ' ' + user.lastName}}</span>
         </div>
         <div>
-            <span>Pos - PG</span>
-            <span>Team - Vikings</span>
-            <span>HT - 6-0</span>
-            <span>WT - 192 lbs</span>
+            <span>Pos - {{user.position || 'N/A'}}</span>
+            <span>HT - {{user.height || 'N/A'}}</span>
+            <span>WT - {{user.weight || 'N/A'}} {{user.weight && 'lbs'}}</span>
         </div>
       </ion-toolbar>
     </ion-header>
