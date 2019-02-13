@@ -62,7 +62,6 @@ export class ShootingPage implements OnInit {
   }
 
   courtClick(event) {
-    console.dir(event);
     const target = event.target || event.srcElement || event.currentTarget;
     const id = target.attributes.id.value;
     this.spot = id;
@@ -88,10 +87,40 @@ export class ShootingPage implements OnInit {
     if (type === 'M') {
       if (modifier === '+') {
         this.makes += 1;
+      } else if (modifier === '-') {
+        if (this.makes <= 0) {
+          return;
+        }
+        this.makes -= 1;
       }
     } else if (type === 'A') {
       if (modifier === '+') {
         this.attempts += 1;
+      } else if (modifier === '-') {
+        if (this.attempts <= 0) {
+          return;
+        }
+        this.attempts -= 1;
+      }
+    }
+  }
+
+  inputChange(event) {
+    const target = event.target || event.srcElement || event.currentTarget;
+    const id = target.attributes.id.value;
+    const value = parseInt(event.detail.value, 10);
+
+    if (id === 'makes') {
+      if (value < 0) {
+        this.makes = 0;
+      } else {
+        this.makes = parseInt(event.detail.value, 10);
+      }
+    } else if (id === 'attempts') {
+      if (value < 0) {
+        this.attempts = 0;
+      } else {
+        this.attempts = parseInt(event.detail.value, 10);
       }
     }
   }

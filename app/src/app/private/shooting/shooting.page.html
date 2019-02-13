@@ -47,13 +47,14 @@
       <area id="lWing7" (click)="courtClick($event)" alt="l-wing-7" title="l-wing-7" coords="538,1086,368,1045,223,958,113,863,56,792,8,714,9,452,104,615,133,661,206,760,294,833,422,906,542,948" shape="poly">
   </map>
 
-  <p text-center>{{spots[spot] || 'Select Spot'}}</p>
+  <p id="spotText" text-center>{{spots[spot] || 'Select Spot'}}</p>
 
   <ion-grid>
-    <ion-row>
+    <ion-row align-items-end>
       <ion-col col-4>
         <ion-item>
-          <ion-input id="makes" type="number" [(value)]="makes" placeholder="Makes"></ion-input>
+          <ion-label position="floating" color="primary">Makes</ion-label>
+          <ion-input id="makes" type="number" (ionChange)="inputChange($event)" value="{{makes}}"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-4>
@@ -63,10 +64,11 @@
         <ion-button color="danger" expand="block" strong="true" (click)="changeShot('M', '-')">-</ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row align-items-end>
       <ion-col col-4>
         <ion-item>
-          <ion-input id="attempts" type="number" [(value)]="attempts" placeholder="Attempts"></ion-input>
+          <ion-label position="floating" color="primary">Attempts</ion-label>
+          <ion-input id="attempts" type="number" (ionChange)="inputChange($event)" value="{{attempts}}"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-4>
