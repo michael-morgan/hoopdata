@@ -12,40 +12,71 @@
   <img id="courtImage" src="../../../assets/basketball-court.jpg" usemap="#courtMap">
 
   <map name="courtMap">
-      <area id="lCorner6" (click)="courtClick($event)" target="" alt="l-corner-6" title="l-corner-6" coords="8,8,100,326" shape="rect">
-      <area id="lCorner5" (click)="courtClick($event)" target="" alt="l-corner-5" title="l-corner-5" coords="104,327,239,9" shape="rect">
-      <area id="lCorner4" (click)="courtClick($event)" target="" alt="l-corner-4" title="l-corner-4" coords="240,9,382,327" shape="rect">
-      <area id="lCorner3" (click)="courtClick($event)" target="" alt="l-corner-3" title="l-corner-3" coords="382,9,541,327" shape="rect">
-      <area id="lCorner2" (click)="courtClick($event)" target="" alt="l-corner-2" title="l-corner-2" coords="542,9,666,327" shape="rect">
-      <area id="lCorner1" (click)="courtClick($event)" target="" alt="l-corner-1" title="l-corner-1" coords="667,9,775,206" shape="rect">
-      <area id="lWing6" (click)="courtClick($event)" target="" alt="l-wing-6" title="l-wing-6" coords="8,326,104,326,128,418,171,515,230,607,289,672,358,736,446,795,541,841,542,889,541,948,422,904,293,835,205,758,133,661,69,560,8,448" shape="poly">
-      <area id="lWing5" (click)="courtClick($event)" target="" alt="l-wing-5" title="l-wing-5" coords="104,327,240,329,255,420,297,516,359,595,427,668,487,709,541,731,542,842,453,797,368,744,264,651,198,558,131,432" shape="poly">
-      <area id="lWing4" (click)="courtClick($event)" target="" alt="l-wing-4" title="l-wing-4" coords="240,327,382,327,391,411,423,482,467,557,541,621,542,730,483,707,427,668,358,595,294,513,255,418" shape="poly">
-      <area id="lWing3" (click)="courtClick($event)" target="" alt="l-wing-3" title="l-wing-3" coords="544,622,616,506,572,452,549,388,542,327,381,327,392,414,423,482,467,560" shape="poly">
-      <area id="lWing2" (click)="courtClick($event)" target="" alt="l-wing-2" title="l-wing-2" coords="615,507,695,387,667,329,539,327,549,388,571,452" shape="poly">
-      <area id="lWing1" (click)="courtClick($event)" target="" alt="l-wing-1" title="l-wing-1" coords="695,388,738,292,776,207,666,204,666,327" shape="poly">
-      <area id="mTop6" (click)="courtClick($event)" target="" alt="m-top-6" title="m-top-6" coords="542,843,639,872,752,890,873,889,978,869,1074,835,1081,931,993,958,883,975,754,981,640,970,542,948" shape="poly">
-      <area id="mTop5" (click)="courtClick($event)" target="" alt="m-top-5" title="m-top-5" coords="542,729,639,767,752,784,874,788,972,768,1063,744,1074,835,982,866,878,886,749,890,634,869,541,841" shape="poly">
-      <area id="mTop4" (click)="courtClick($event)" target="" alt="m-top-4" title="m-top-4" coords="542,622,1061,621,1063,744,973,767,871,788,755,785,642,768,541,730" shape="poly">
-      <area id="mTop3" (click)="courtClick($event)" target="" alt="m-top-3" title="m-top-3" coords="1060,621,968,507,874,510,738,509,616,503,545,624" shape="poly">
-      <area id="mTop2" (click)="courtClick($event)" target="" alt="m-top-2" title="m-top-2" coords="617,505,728,509,866,510,968,506,890,397,840,412,752,408,697,386" shape="poly">
-      <area id="mTop1" (click)="courtClick($event)" target="" alt="m-top-1" title="m-top-1" coords="775,206,827,206,890,397,839,411,755,408,698,386" shape="poly">
-      <area id="rCorner6" (click)="courtClick($event)" target="" alt="r-corner-6" title="r-corner-6" coords="1502,327,1597,10" shape="rect">
-      <area id="rCorner5" (click)="courtClick($event)" target="" alt="r-corner-5" title="r-corner-5" coords="1370,327,1499,7" shape="rect">
-      <area id="rCorner4" (click)="courtClick($event)" target="" alt="r-corner-4" title="r-corner-4" coords="1216,327,1369,10" shape="rect">
-      <area id="rCorner3" (click)="courtClick($event)" target="" alt="r-corner-3" title="r-corner-3" coords="1063,327,1217,10" shape="rect">
-      <area id="rCorner2" (click)="courtClick($event)" target="" alt="r-corner-2" title="r-corner-2" coords="936,7,1060,327" shape="rect">
-      <area id="rCorner1" (click)="courtClick($event)" target="" alt="r-corner-1" title="r-corner-1" coords="827,210,934,9" shape="rect">
-      <area id="rWing6" (click)="courtClick($event)" target="" alt="r-wing-6" title="r-wing-6" coords="1502,327,1470,431,1423,527,1369,610,1299,689,1216,758,1141,804,1075,836,1081,933,1183,900,1281,835,1372,756,1460,669,1543,558,1596,415,1593,327" shape="poly">
-      <area id="rWing5" (click)="courtClick($event)" target="" alt="r-wing-5" title="r-wing-5" coords="1064,746,1135,704,1186,659,1233,612,1294,530,1341,442,1372,329,1499,327,1467,444,1394,575,1321,668,1250,731,1178,784,1074,836" shape="poly">
-      <area id="rWing4" (click)="courtClick($event)" target="" alt="r-wing-4" title="r-wing-4" coords="1061,621,1134,560,1183,489,1210,411,1217,327,1373,327,1338,448,1290,537,1231,614,1135,704,1063,746" shape="poly">
-      <area id="rWing3" (click)="courtClick($event)" target="" alt="r-wing-3" title="r-wing-3" coords="969,507,1039,456,1060,387,1061,327,1217,327,1209,415,1183,486,1135,557,1061,621" shape="poly">
-      <area id="rWing2" (click)="courtClick($event)" target="" alt="r-wing-2" title="r-wing-2" coords="891,395,938,327,1061,329,1058,395,1039,456,969,506" shape="poly">
-      <area id="rWing1" (click)="courtClick($event)" target="" alt="r-wing-1" title="r-wing-1" coords="829,210,935,211,936,329,890,395" shape="poly">
-      <area id="rWing7" (click)="courtClick($event)" target="" alt="r-wing-7" title="r-wing-7" coords="1593,427,1594,736,1484,867,1360,968,1238,1030,1090,1083,1083,933,1183,902,1284,834,1409,721,1475,651,1545,556" shape="poly">
-      <area id="mTop7" (click)="courtClick($event)" target="" alt="m-top-7" title="m-top-7" coords="542,950,640,970,749,981,885,975,993,958,1083,931,1091,1084,1005,1097,893,1103,754,1108,634,1100,539,1087" shape="poly">
-      <area id="lWing7" (click)="courtClick($event)" target="" alt="l-wing-7" title="l-wing-7" coords="538,1086,368,1045,223,958,113,863,56,792,8,714,9,452,104,615,133,661,206,760,294,833,422,906,542,948" shape="poly">
+      <area id="lCorner6" (click)="courtClick($event)" alt="l-corner-6" title="l-corner-6" coords="8,8,100,326" shape="rect">
+      <area id="lCorner5" (click)="courtClick($event)" alt="l-corner-5" title="l-corner-5" coords="104,327,239,9" shape="rect">
+      <area id="lCorner4" (click)="courtClick($event)" alt="l-corner-4" title="l-corner-4" coords="240,9,382,327" shape="rect">
+      <area id="lCorner3" (click)="courtClick($event)" alt="l-corner-3" title="l-corner-3" coords="382,9,541,327" shape="rect">
+      <area id="lCorner2" (click)="courtClick($event)" alt="l-corner-2" title="l-corner-2" coords="542,9,666,327" shape="rect">
+      <area id="lCorner1" (click)="courtClick($event)" alt="l-corner-1" title="l-corner-1" coords="667,9,775,206" shape="rect">
+      <area id="lWing6" (click)="courtClick($event)" alt="l-wing-6" title="l-wing-6" coords="8,326,104,326,128,418,171,515,230,607,289,672,358,736,446,795,541,841,542,889,541,948,422,904,293,835,205,758,133,661,69,560,8,448" shape="poly">
+      <area id="lWing5" (click)="courtClick($event)" alt="l-wing-5" title="l-wing-5" coords="104,327,240,329,255,420,297,516,359,595,427,668,487,709,541,731,542,842,453,797,368,744,264,651,198,558,131,432" shape="poly">
+      <area id="lWing4" (click)="courtClick($event)" alt="l-wing-4" title="l-wing-4" coords="240,327,382,327,391,411,423,482,467,557,541,621,542,730,483,707,427,668,358,595,294,513,255,418" shape="poly">
+      <area id="lWing3" (click)="courtClick($event)" alt="l-wing-3" title="l-wing-3" coords="544,622,616,506,572,452,549,388,542,327,381,327,392,414,423,482,467,560" shape="poly">
+      <area id="lWing2" (click)="courtClick($event)" alt="l-wing-2" title="l-wing-2" coords="615,507,695,387,667,329,539,327,549,388,571,452" shape="poly">
+      <area id="lWing1" (click)="courtClick($event)" alt="l-wing-1" title="l-wing-1" coords="695,388,738,292,776,207,666,204,666,327" shape="poly">
+      <area id="mTop6" (click)="courtClick($event)" alt="m-top-6" title="m-top-6" coords="542,843,639,872,752,890,873,889,978,869,1074,835,1081,931,993,958,883,975,754,981,640,970,542,948" shape="poly">
+      <area id="mTop5" (click)="courtClick($event)" alt="m-top-5" title="m-top-5" coords="542,729,639,767,752,784,874,788,972,768,1063,744,1074,835,982,866,878,886,749,890,634,869,541,841" shape="poly">
+      <area id="mTop4" (click)="courtClick($event)" alt="m-top-4" title="m-top-4" coords="542,622,1061,621,1063,744,973,767,871,788,755,785,642,768,541,730" shape="poly">
+      <area id="mTop3" (click)="courtClick($event)" alt="m-top-3" title="m-top-3" coords="1060,621,968,507,874,510,738,509,616,503,545,624" shape="poly">
+      <area id="mTop2" (click)="courtClick($event)" alt="m-top-2" title="m-top-2" coords="617,505,728,509,866,510,968,506,890,397,840,412,752,408,697,386" shape="poly">
+      <area id="mTop1" (click)="courtClick($event)" alt="m-top-1" title="m-top-1" coords="775,206,827,206,890,397,839,411,755,408,698,386" shape="poly">
+      <area id="rCorner6" (click)="courtClick($event)" alt="r-corner-6" title="r-corner-6" coords="1502,327,1597,10" shape="rect">
+      <area id="rCorner5" (click)="courtClick($event)" alt="r-corner-5" title="r-corner-5" coords="1370,327,1499,7" shape="rect">
+      <area id="rCorner4" (click)="courtClick($event)" alt="r-corner-4" title="r-corner-4" coords="1216,327,1369,10" shape="rect">
+      <area id="rCorner3" (click)="courtClick($event)" alt="r-corner-3" title="r-corner-3" coords="1063,327,1217,10" shape="rect">
+      <area id="rCorner2" (click)="courtClick($event)" alt="r-corner-2" title="r-corner-2" coords="936,7,1060,327" shape="rect">
+      <area id="rCorner1" (click)="courtClick($event)" alt="r-corner-1" title="r-corner-1" coords="827,210,934,9" shape="rect">
+      <area id="rWing6" (click)="courtClick($event)" alt="r-wing-6" title="r-wing-6" coords="1502,327,1470,431,1423,527,1369,610,1299,689,1216,758,1141,804,1075,836,1081,933,1183,900,1281,835,1372,756,1460,669,1543,558,1596,415,1593,327" shape="poly">
+      <area id="rWing5" (click)="courtClick($event)" alt="r-wing-5" title="r-wing-5" coords="1064,746,1135,704,1186,659,1233,612,1294,530,1341,442,1372,329,1499,327,1467,444,1394,575,1321,668,1250,731,1178,784,1074,836" shape="poly">
+      <area id="rWing4" (click)="courtClick($event)" alt="r-wing-4" title="r-wing-4" coords="1061,621,1134,560,1183,489,1210,411,1217,327,1373,327,1338,448,1290,537,1231,614,1135,704,1063,746" shape="poly">
+      <area id="rWing3" (click)="courtClick($event)" alt="r-wing-3" title="r-wing-3" coords="969,507,1039,456,1060,387,1061,327,1217,327,1209,415,1183,486,1135,557,1061,621" shape="poly">
+      <area id="rWing2" (click)="courtClick($event)" alt="r-wing-2" title="r-wing-2" coords="891,395,938,327,1061,329,1058,395,1039,456,969,506" shape="poly">
+      <area id="rWing1" (click)="courtClick($event)" alt="r-wing-1" title="r-wing-1" coords="829,210,935,211,936,329,890,395" shape="poly">
+      <area id="rWing7" (click)="courtClick($event)" alt="r-wing-7" title="r-wing-7" coords="1593,427,1594,736,1484,867,1360,968,1238,1030,1090,1083,1083,933,1183,902,1284,834,1409,721,1475,651,1545,556" shape="poly">
+      <area id="mTop7" (click)="courtClick($event)" alt="m-top-7" title="m-top-7" coords="542,950,640,970,749,981,885,975,993,958,1083,931,1091,1084,1005,1097,893,1103,754,1108,634,1100,539,1087" shape="poly">
+      <area id="lWing7" (click)="courtClick($event)" alt="l-wing-7" title="l-wing-7" coords="538,1086,368,1045,223,958,113,863,56,792,8,714,9,452,104,615,133,661,206,760,294,833,422,906,542,948" shape="poly">
   </map>
 
-  <p>{{spots[spot]}}</p>
+  <p text-center>{{spots[spot] || 'Select Spot'}}</p>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+        <ion-item>
+          <ion-input id="makes" type="number" [(value)]="makes" placeholder="Makes"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-4>
+        <ion-button color="secondary" expand="block" strong="true" (click)="changeShot('M', '+')">+</ion-button>
+      </ion-col>
+      <ion-col col-4>
+        <ion-button color="danger" expand="block" strong="true" (click)="changeShot('M', '-')">-</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        <ion-item>
+          <ion-input id="attempts" type="number" [(value)]="attempts" placeholder="Attempts"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-4>
+        <ion-button color="secondary" expand="block" strong="true" (click)="changeShot('A', '+')">+</ion-button>
+      </ion-col>
+      <ion-col col-4>
+        <ion-button color="danger" expand="block" strong="true" (click)="changeShot('A', '-')">-</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button id="saveButton" expand="block" strong="true">Save</ion-button>
 </ion-content>

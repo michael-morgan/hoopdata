@@ -27,7 +27,6 @@
     "@ionic/angular": "^4.0.0",
     "@ionic/storage": "^2.2.0",
     "core-js": "^2.5.4",
-    "ng-maphilight": "^0.2.2",
     "resize-image-map": "^1.0.1",
     "rxjs": "~6.3.3",
     "save": "^2.3.3",

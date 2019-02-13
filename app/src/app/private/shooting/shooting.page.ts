@@ -48,6 +48,8 @@ export class ShootingPage implements OnInit {
     'mTop6': 'Middle Top 6',
     'mTop7': 'Middle Top 7'
   };
+  private makes = 0;
+  private attempts = 0;
 
   constructor() { }
 
@@ -76,9 +78,21 @@ export class ShootingPage implements OnInit {
       left: ${(event.pageX - 7)}px;
       width: 15px;
       height: 15px;
-      background: #f57c00;
+      background: #006bff;
       border-radius: 10px;
     `;
     document.querySelector('#content').insertAdjacentHTML('beforeend', `<div id="marker" style="${style}"></div>`);
+  }
+
+  changeShot(type, modifier) {
+    if (type === 'M') {
+      if (modifier === '+') {
+        this.makes += 1;
+      }
+    } else if (type === 'A') {
+      if (modifier === '+') {
+        this.attempts += 1;
+      }
+    }
   }
 }
