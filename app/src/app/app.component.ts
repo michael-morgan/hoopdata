@@ -25,7 +25,6 @@ export class AppComponent {
     private authService: AuthenticationService,
     private router: Router,
     private menu: MenuController,
-    private storage: Storage,
     private userService: UserService
   ) {
     this.initializeApp();
@@ -39,8 +38,10 @@ export class AppComponent {
       this.authService.getState().subscribe(state => {
         if (state) {
           this.router.navigate(['private', 'dashboard']);
+          console.log('Yes state');
         } else {
           this.router.navigate(['lander']);
+          console.log('No state');
         }
       });
 

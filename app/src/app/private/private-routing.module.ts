@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
-  { path: 'user/:id', loadChildren: './user/user.module#UserPageModule' }
+  { path: 'user/:id', loadChildren: './user/user.module#UserPageModule' },
+  { path: 'shooting', loadChildren: './shooting/shooting.module#ShootingPageModule' }
 ];
 
 @NgModule({
