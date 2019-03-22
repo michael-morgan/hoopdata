@@ -5,7 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 
 import { AuthenticationService } from './authentication.service';
 
-const userAPI = 'http://192.168.0.12:3000/api/user';
+const userAPI = 'http://192.168.0.10:3000/api/user';
 
 @Injectable({
   providedIn: 'root'

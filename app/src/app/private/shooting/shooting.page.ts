@@ -71,10 +71,11 @@ export class ShootingPage implements OnInit {
     if (marker) {
       marker.parentNode.removeChild(marker);
     }
+    const headerHeight = document.querySelector('#shootingHeader').clientHeight;
     const style = `
       position: absolute;
-      top: ${(event.pageY - 51)}px;
-      left: ${(event.pageX - 7)}px;
+      top: ${(event.clientY - (7 + headerHeight))}px;
+      left: ${(event.clientX - 7)}px;
       width: 15px;
       height: 15px;
       background: #006bff;
