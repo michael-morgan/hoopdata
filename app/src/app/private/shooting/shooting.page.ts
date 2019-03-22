@@ -125,4 +125,30 @@ export class ShootingPage implements OnInit {
       }
     }
   }
+
+  initCourtValues() {
+    const courtSpots = document.querySelectorAll('map[name="courtMap"] > area');
+    [].forEach.call(courtSpots, function(spot) {
+      const value = spot.dataset.value;
+      // const coords = spot.getAttribute('coords').split(',');
+      const courtImage = document.querySelector('#courtImage');
+      const scale = courtImage['naturalWidth'] / courtImage.clientWidth;
+      // const leftOffset = coords[0] / scale;
+      // const topOffset = coords[1] / scale;
+      const leftOffset = spot.dataset.x / scale;
+      const topOffset = spot.dataset.y / scale;
+      const style = `
+        position: absolute;
+        top: ${topOffset}px;
+        left: ${leftOffset}px;
+        font-size: 10px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 2px;
+      `;
+
+      document.querySelector('#courtContainer')
+        .insertAdjacentHTML('beforeend', `<span style="${style}">${value}</span>`);
+    });
+  }
 }
