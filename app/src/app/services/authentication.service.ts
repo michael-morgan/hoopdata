@@ -40,6 +40,7 @@ export class AuthenticationService {
         } else {
           this.storage.remove(TOKEN_KEY);
           window.localStorage.removeItem(TOKEN_KEY);
+          window.localStorage.removeItem('userId');
         }
       }
     });
@@ -64,6 +65,7 @@ export class AuthenticationService {
         tap(res => {
           this.storage.set(TOKEN_KEY, res['accessToken']);
           window.localStorage.setItem(TOKEN_KEY, res['accessToken']);
+          window.localStorage.setItem('userId', res['userId']);
           this.authenticationState.next(true);
           this.userSubject.next(this.helper.decodeToken(res['accessToken']));
         }),
@@ -77,6 +79,7 @@ export class AuthenticationService {
   public logout() {
     return this.storage.remove(TOKEN_KEY).then(() => {
       window.localStorage.removeItem(TOKEN_KEY);
+      window.localStorage.removeItem('userId');
       this.authenticationState.next(false);
       this.router.navigate(['/login']);
     });

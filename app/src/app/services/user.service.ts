@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { AuthenticationService } from './authentication.service';
 
@@ -35,7 +35,8 @@ export class UserService {
   public getUser(id): Observable<any> {
     return this.http.get(`${userAPI}/${id}`, this.getHeaders()).pipe(
       map(this.extractData),
-      catchError(this.handleError));
+      catchError(this.handleError)
+    );
   }
 
   // public getUserById(id: string): Observable<any> {
@@ -71,5 +72,21 @@ export class UserService {
   private getHeaders() {
     const token = this.authService.getToken();
     return { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'x-access-token': token }) };
+  }
+
+  public getUserSpots(id): Observable<any> {
+    console.log('User ID: ', id);
+    return this.http.get(`${userAPI}/spot/${id}`, this.getHeaders()).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
+
+  public addSpot(data): Observable<any> {
+    console.log('Data: ', data);
+    return this.http.post(`${userAPI}/spot`, data, this.getHeaders())
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 }

@@ -55,7 +55,7 @@ module.exports = {
 
             const token = jwt.sign({ id: user.id, email: user.email }, secretKey, { expiresIn: 86400 });
 
-            res.status(200).send({ auth: true, accessToken: token, success: true, message: 'Login successful.' });
+            res.status(200).send({ auth: true, accessToken: token, userId: user.id, success: true, message: 'Login successful.' });
         }).catch(err => {
             res.status(500).send({ success: false, message: 'Error: ' + err });
         });

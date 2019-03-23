@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import ImageResize from 'resize-image-map';
 
+import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'app-shooting',
   templateUrl: './shooting.page.html',
@@ -51,7 +53,15 @@ export class ShootingPage implements OnInit {
   private makes = 0;
   private attempts = 0;
 
-  constructor() { }
+  public userSpots: any = [];
+
+  constructor(private userService: UserService) {
+    this.userService.getUserSpots(window.localStorage.getItem('userId'))
+        .subscribe(res => {
+          this.userSpots = res;
+          this.loadCourtValues();
+        });
+  }
 
   ngOnInit() {
     const imageResize = new ImageResize({
@@ -126,10 +136,11 @@ export class ShootingPage implements OnInit {
     }
   }
 
-  initCourtValues() {
+  loadCourtValues() {
     const courtSpots = document.querySelectorAll('map[name="courtMap"] > area');
-    [].forEach.call(courtSpots, function(spot) {
-      const value = spot.dataset.value;
+    for (const spot of courtSpots as any) {
+      const value = this.getUserSpotPercentage(spot.id);
+      if (!value) { continue; }
       const courtImage = document.querySelector('#courtImage');
       const scale = courtImage['naturalWidth'] / courtImage.clientWidth;
       const leftOffset = spot.dataset.x / scale;
@@ -144,8 +155,41 @@ export class ShootingPage implements OnInit {
         padding: 2px;
       `;
 
+      const percentageElements = document.querySelector('#courtContainer > span');
+      while (percentageElements && percentageElements[0]) {
+        percentageElements[0].parentNode.removeChild(percentageElements[0]);
+      }
+
       document.querySelector('#courtContainer')
         .insertAdjacentHTML('beforeend', `<span style="${style}">${value}</span>`);
+    }
+  }
+
+  saveSpot() {
+    const data = {
+      spot: this.spot,
+      userId: window.localStorage.getItem('userId'),
+      makes: this.makes,
+      attempts: this.attempts
+    };
+    this.userService.addSpot(data)
+      .subscribe(res => {
+        this.userSpots.push(res.spot);
+        this.loadCourtValues();
+      });
+  }
+
+  getUserSpotPercentage(spot) {
+    const filteredUserSpots = this.userSpots.filter(function(item) {
+      return item.spot === spot;
     });
+    let totalMakes = 0;
+    let totalAttempts = 0;
+    for (const userSpot of filteredUserSpots) {
+      totalMakes += userSpot.makes;
+      totalAttempts += userSpot.attempts;
+    }
+
+    return Math.trunc((totalMakes / totalAttempts) * 100);
   }
 }

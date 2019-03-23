@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 
 import { Platform, MenuController } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -45,12 +44,10 @@ export class AppComponent {
         }
       });
 
-      this.authService.getUser().subscribe(user => {
-        this.userService.getUser(user.id)
-          .subscribe(res => {
-            this.user = res;
-          });
-      });
+      this.userService.getUser(window.localStorage.getItem('userId'))
+        .subscribe(res => {
+          this.user = res;
+        });
     });
   }
 

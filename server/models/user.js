@@ -22,7 +22,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   User.associate = function(models) {
-    User.hasMany(models.Spot);
+    User.hasMany(models.Spot, {
+      foreignKey: {
+        name: 'userId',
+        allowNull: false
+      }
+    });
   };
 
   return User;
